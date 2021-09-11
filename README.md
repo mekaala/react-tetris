@@ -1,3 +1,11 @@
+# REACT TETRIS
+
+This project made by React was built with the help of FreeCodeCamp. The code is a fully functional Tetris game made with React Hooks.
+
+I wanted to build this game with the intention of learning more about React Hooks, making styled components that are properly mapped, and using arrays to build shapes in code.
+
+I learned not only how to utilize React Hooks, but to set key codes, structure future React projects where I can import various hook files from a specialized "hooks" foler, and setting motion for items on an application. I hope to improve upon this project by adding more features such as a hard drop that brings down Tetrominos to the bottom rapidly, and pausing to keep pacing comfortable.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
