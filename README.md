@@ -4,7 +4,19 @@ This project made by React was built with the help of FreeCodeCamp. The code is 
 
 I wanted to build this game with the intention of learning more about React Hooks, making styled components that are properly mapped, and using arrays to build shapes in code.
 
-I learned not only how to utilize React Hooks, but to set key codes, structure future React projects where I can import various hook files from a specialized "hooks" foler, and setting motion for items on an application. I hope to improve upon this project by adding more features such as a hard drop that brings down Tetrominos to the bottom rapidly, and pausing to keep pacing comfortable.
+I learned not only how to utilize React Hooks, but to set key codes, structure future React projects where I can import various hook files from a specialized "hooks" foler, and setting motion for items on an application.
+
+## Future Plans
+
+I want to strengthen this application with more features.
+
+1. Most importantly, I want users to pause the game so they can take a break.
+
+2. I also want to add an auto-drop input to make for faster gameplay.
+
+3. Another feature to add would be to add a preview window for the next Tetromino. Planning your rows is the most important part of Tetris, so letting users see the next block to come would be very helpful.
+
+I hope to improve upon this project by adding more features such as a hard drop that brings down Tetrominos to the bottom rapidly, and pausing to keep pacing comfortable.
 
 # Getting Started with Create React App
 
