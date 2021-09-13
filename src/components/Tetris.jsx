@@ -12,10 +12,11 @@ import { useStage } from '../hooks/useStage';
 import { useGameStatus } from '../hooks/useGameStatus';
 
 // Components
-import Stage from './Stage'
-import Display from './Display'
-import StartButton from './StartButton'
+import Stage from './Stage';
+import Display from './Display';
+import StartButton from './StartButton';
 // import NextBlock from './NextBlock';
+import Controls from './Controls';
 
 const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
@@ -83,13 +84,23 @@ const Tetris = () => {
     const hardDrop = () => {
         let pot = 0;
         while (!checkCollision(player, stage, { x: 0, y: pot })) {
-           setDropTime(5);
+           setDropTime((1000 / (level + 1) + 200) * 5);
            pot += 1;
         }
      
         updatePlayerPos({ x: 0, y: pot-1, collided: true });
         setDropTime(1000 / (level + 1) + 200);
      }
+
+    //  const pause = () => {
+    //     //  need to stop movement entirely
+    //     setDropTime(null);
+    //     // need to stop movement entirely as well
+    //     if (movePlayer()) {
+    //         console.log("move")
+    //         setDropTime(1000 / (level + 1) + 200);
+    //     }
+    //  }
 
     const move = ({ keyCode }) => {
         if (!gameOver) {
@@ -108,6 +119,8 @@ const Tetris = () => {
                 playerRotate(stage, -1);
             } else if (keyCode === 220) {
                 hardDrop();
+            // } else if (keyCode === 27) {
+            //     pause();
             }
         }
     }
@@ -125,7 +138,7 @@ const Tetris = () => {
                         )
                         : (
                             <div>
-                                {/* <NextBlock/> */}
+                                {/* <NextBlock block={block}/> */}
                                 <Display text={`Score: ${score}`}/>
                                 <Display text={`Rows: ${rows}`}/>
                                 <Display text={`Level: ${level + 1}`}/>
@@ -134,6 +147,7 @@ const Tetris = () => {
                     }
                     <StartButton callback={startGame}/>
                 </aside>
+                <Controls/>
             </StyledTetris>
         </StyledTetrisWrapper>
     )
