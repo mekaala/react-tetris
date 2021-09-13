@@ -12,9 +12,7 @@ I want to strengthen this application with more features.
 
 1. Most importantly, I want users to pause the game so they can take a break.
 
-2. I also want to add an auto-drop input to make for faster gameplay.
-
-3. Another feature to add would be to add a preview window for the next Tetromino. Planning your rows is the most important part of Tetris, so letting users see the next block to come would be very helpful.
+2. Another feature to add would be to add a preview window for the next Tetromino. Planning your rows is the most important part of Tetris, so letting users see the next block to come would be very helpful.
 
 I hope to improve upon this project by adding more features such as a hard drop that brings down Tetrominos to the bottom rapidly, and pausing to keep pacing comfortable.
 
