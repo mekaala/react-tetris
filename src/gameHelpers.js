@@ -1,6 +1,12 @@
 export const STAGE_WIDTH = 12;
 export const STAGE_HEIGHT = 20;
 
+export const NEXT_WIDTH = 4;
+export const NEXT_HEIGHT = 4;
+
+export const createNextBlock = () =>
+    Array.from(Array(NEXT_HEIGHT), () => new Array(NEXT_WIDTH).fill([0, 'clear']));
+
 export const createStage = () => 
 // create new array from an array with stage height of 20
 // for each row, create new array with cells with one value that is zero
