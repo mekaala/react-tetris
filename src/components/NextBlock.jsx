@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { StyledNextBlock } from './styles/StyledNextBlock';
-import Cell from './Cell'
+import Cell from './Cell';
 
 const NextBlock = ({ block }) => (
     <StyledNextBlock width={block[0].length} height={block.length}>
