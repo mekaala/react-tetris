@@ -15,6 +15,7 @@ import { useGameStatus } from '../hooks/useGameStatus';
 import Stage from './Stage'
 import Display from './Display'
 import StartButton from './StartButton'
+// import NextBlock from './NextBlock';
 
 const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
@@ -79,6 +80,17 @@ const Tetris = () => {
         drop();
     }, dropTime)
 
+    const hardDrop = () => {
+        let pot = 0;
+        while (!checkCollision(player, stage, { x: 0, y: pot })) {
+           setDropTime(5);
+           pot += 1;
+        }
+     
+        updatePlayerPos({ x: 0, y: pot-1, collided: true });
+        setDropTime(1000 / (level + 1) + 200);
+     }
+
     const move = ({ keyCode }) => {
         if (!gameOver) {
             if (keyCode === 37) {
@@ -94,6 +106,8 @@ const Tetris = () => {
                 playerRotate(stage, 1);
             }  else if (keyCode === 16) {
                 playerRotate(stage, -1);
+            } else if (keyCode === 220) {
+                hardDrop();
             }
         }
     }
@@ -111,6 +125,7 @@ const Tetris = () => {
                         )
                         : (
                             <div>
+                                {/* <NextBlock/> */}
                                 <Display text={`Score: ${score}`}/>
                                 <Display text={`Rows: ${rows}`}/>
                                 <Display text={`Level: ${level + 1}`}/>
