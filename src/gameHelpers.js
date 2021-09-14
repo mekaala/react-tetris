@@ -4,7 +4,7 @@ export const STAGE_HEIGHT = 20;
 export const NEXT_WIDTH = 4;
 export const NEXT_HEIGHT = 4;
 
-export const createNextBlock = () =>
+export const createPreview = () =>
     Array.from(Array(NEXT_HEIGHT), () => new Array(NEXT_WIDTH).fill([0, 'clear']));
 
 export const createStage = () => 
