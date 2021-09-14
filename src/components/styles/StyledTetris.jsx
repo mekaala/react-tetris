@@ -25,24 +25,39 @@ export const StyledTetris = styled.div`
 `
 
 export const StyledButtons = styled.div`
-    display: grid;
-    grid-template-columns: fit-content(30%) fit-content(30%) fit-content(30%);
-    // margin-left: 165px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     column-gap: 5px;
-    min-width: 300px;
+    min-width: 20vw;
+    margin: 10px auto;
 `
 
-export const StyledControl = styled.button`
+export const StyledDPad = styled.button`
     box-sizing: border-box;
-    margin: 0 0 20px 0;
-    padding: 10px;
-    min-height: 30px;
+    padding: 12px;
+    width: 37px;
+    height: 37px;
+    border: none;
+    color: white;
+    background: #333;
+    font-family: Pixel, Arial, Helvetica, sans-serif;
+    // font-size: 0.7rem;
+    cursor: pointer;
+`
+
+export const StyledFace = styled.button`
+    box-sizing: border-box;
+    margin: 0 10px;
+    padding: 12px;
+    width: 37px;
+    height: 37px;
     border-radius: 20px;
     border: none;
     color: white;
     background: #333;
     font-family: Pixel, Arial, Helvetica, sans-serif;
-    font-size: 0.7rem;
+    // font-size: 0.7rem;
     outline: none;
     cursor: pointer;
 `
