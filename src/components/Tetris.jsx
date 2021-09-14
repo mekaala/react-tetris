@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { createStage, checkCollision } from '../gameHelpers';
 
 // Style Components
-import { StyledTetrisWrapper, StyledTetris } from './styles/StyledTetris';
+import { StyledTetrisWrapper, StyledTetris, StyledButtons, StyledControl } from './styles/StyledTetris';
 
 // Custom Hooks
 import { useInterval } from '../hooks/useInterval';
@@ -27,12 +27,6 @@ const Tetris = () => {
     const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
     const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
 
-    const movePlayer = dir => {
-        if (!checkCollision(player, stage, { x: dir, y: 0 })) {
-            updatePlayerPos({ x: dir, y: 0});
-        }
-    }
-
     const startGame = () => {
         // reset game
         setStage(createStage());
@@ -44,6 +38,45 @@ const Tetris = () => {
         setLevel(0);
     }
 
+    // MOVING BLOCKS
+    const movePlayer = dir => {
+        if (!checkCollision(player, stage, { x: dir, y: 0 })) {
+            updatePlayerPos({ x: dir, y: 0});
+        }
+    }
+
+    // These functions are the same as movePlayer right and left respectively,
+    // but I wanted to add them for a possible mobile version.
+    // Having designated buttons for moving left and right will help with accessibility.
+
+    // MOVE BLOCK RIGHT
+    const moveRight = () => {
+        if (!checkCollision(player, stage, { x: 1, y: 0 })) {
+            updatePlayerPos({ x: 1, y: 0});
+        }
+    }
+
+    // MOVE BLOCK LEFT
+    const moveLeft = () => {
+        if (!checkCollision(player, stage, { x: -1, y: 0 })) {
+            updatePlayerPos({ x: -1, y: 0});
+        }
+    }
+
+    // These functions are responsible for rotating the Tetrominos.
+    // They will serve as functions for the future mobile mode.
+
+    // ROTATE BLOCK RIGHT
+    const rotateRight = () => {
+        playerRotate(stage, 1)
+    }
+
+    // ROTATE BLOCK LEFT
+    const rotateLeft = () => {
+        playerRotate(stage, -1)
+    }
+
+    // DROPPING BLOCKS UNDER RIGHT CONDITIONS
     const drop = () => {
         // increase level when player has cleared rows
         if (rows > (level + 1) * 10) {
@@ -72,22 +105,27 @@ const Tetris = () => {
         }
     }
 
+    // DROPPING BLOCKS
     const dropPlayer = () => {
         setDropTime(null);
         drop();
+        setDropTime(1000 / (level + 1) + 200);
     }
 
     useInterval(() => {
         drop();
     }, dropTime)
 
+    // The following is a function for Hard Drops, a staple of Tetris.
+    // Hard drops save time on making moves by immediately dropping the block to the bottom.
+
+    // HARD DROP OF BLOCKS
     const hardDrop = () => {
         let pot = 0;
         while (!checkCollision(player, stage, { x: 0, y: pot })) {
            setDropTime((1000 / (level + 1) + 200) * 5);
            pot += 1;
         }
-     
         updatePlayerPos({ x: 0, y: pot-1, collided: true });
         setDropTime(1000 / (level + 1) + 200);
      }
@@ -104,21 +142,21 @@ const Tetris = () => {
 
     const move = ({ keyCode }) => {
         if (!gameOver) {
-            if (keyCode === 37) {
+            if (keyCode === 37 || keyCode === 65) {
                 movePlayer(-1);
                 // move tetromino left one unit (keyCode for 37 is left arrow key)
-            } else if (keyCode === 39) {
+            } else if (keyCode === 39 || keyCode === 68) {
                 movePlayer(1);
                 // move tetromino right one unit (keyCode for 39 is right arrow key)
-            } else if (keyCode === 40) {
+            } else if (keyCode === 40 || keyCode === 83) {
                 dropPlayer();
                 // drop tetromino down one unit (keyCode for 40 is down arrow key)
-            } else if (keyCode === 38) {
-                playerRotate(stage, 1);
-            }  else if (keyCode === 16) {
-                playerRotate(stage, -1);
-            } else if (keyCode === 220) {
+            } else if (keyCode === 38 || keyCode === 87) {
                 hardDrop();
+            } else if (keyCode === 16 || keyCode === 81) {
+                playerRotate(stage, 1);
+            }  else if (keyCode === 191 || keyCode === 69) {
+                playerRotate(stage, -1);
             // } else if (keyCode === 27) {
             //     pause();
             }
@@ -131,6 +169,7 @@ const Tetris = () => {
             <StyledTetris>
                 <Stage stage={stage}/>
                 <aside>
+                    <h3>Legend</h3>
                     {
                     gameOver
                         ? (
@@ -146,6 +185,14 @@ const Tetris = () => {
                         )
                     }
                     <StartButton callback={startGame}/>
+                    <StyledButtons>
+                        <StyledControl onClick={rotateLeft}>Rotate<br/>Left</StyledControl>
+                        <StyledControl onClick={hardDrop}>Hard<br/>Drop</StyledControl>
+                        <StyledControl onClick={rotateRight}>Rotate<br/>Right</StyledControl>
+                        <StyledControl onClick={moveLeft}>Move<br/>Left</StyledControl>
+                        <StyledControl onClick={drop}>Soft<br/>Drop</StyledControl>
+                        <StyledControl onClick={moveRight}>Move<br/>Right</StyledControl>
+                    </StyledButtons>
                 </aside>
                 <Controls/>
             </StyledTetris>
