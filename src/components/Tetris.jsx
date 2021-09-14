@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { createStage, checkCollision } from '../gameHelpers';
 
 // Style Components
-import { StyledTetrisWrapper, StyledTetris, StyledButtons, StyledControl } from './styles/StyledTetris';
+import { StyledTetrisWrapper, StyledTetris, StyledButtons, StyledDPad, StyledFace } from './styles/StyledTetris';
 
 // Custom Hooks
 import { useInterval } from '../hooks/useInterval';
@@ -15,7 +15,7 @@ import { useGameStatus } from '../hooks/useGameStatus';
 import Stage from './Stage';
 import Display from './Display';
 import StartButton from './StartButton';
-// import NextBlock from './NextBlock';
+import NextBlock from './NextBlock';
 import Controls from './Controls';
 
 const Tetris = () => {
@@ -24,7 +24,7 @@ const Tetris = () => {
 
 
     const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
-    const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
+    const [stage, setStage, preview, rowsCleared] = useStage(player, resetPlayer);
     const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
 
     const startGame = () => {
@@ -130,15 +130,16 @@ const Tetris = () => {
         setDropTime(1000 / (level + 1) + 200);
      }
 
-    //  const pause = () => {
-    //     //  need to stop movement entirely
-    //     setDropTime(null);
-    //     // need to stop movement entirely as well
-    //     if (movePlayer()) {
-    //         console.log("move")
-    //         setDropTime(1000 / (level + 1) + 200);
-    //     }
-    //  }
+     const pause = () => {
+        //  need to stop movement entirely
+        console.log("paused");
+        setDropTime(null);
+        // need to stop movement entirely as well
+        if (movePlayer(1) || movePlayer(-1)) {
+            console.log("move")
+            setDropTime(1000 / (level + 1) + 200);
+        }
+     }
 
     const move = ({ keyCode }) => {
         if (!gameOver) {
@@ -157,8 +158,8 @@ const Tetris = () => {
                 playerRotate(stage, 1);
             }  else if (keyCode === 191 || keyCode === 69) {
                 playerRotate(stage, -1);
-            // } else if (keyCode === 27) {
-            //     pause();
+            } else if (keyCode === 27) {
+                pause();
             }
         }
     }
@@ -167,7 +168,24 @@ const Tetris = () => {
         <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={e => move(e)} onKeyUp={keyUp}>
             <h1>React Tetris</h1>
             <StyledTetris>
-                <Stage stage={stage}/>
+                <div>
+                    <Stage stage={stage}/>
+                    <StyledButtons>
+                        <div>
+                            <StyledDPad onClick={hardDrop}>▲</StyledDPad>
+                            <div>
+                                <StyledDPad onClick={moveLeft}>◄</StyledDPad>
+                                <StyledDPad>♦</StyledDPad>
+                                <StyledDPad onClick={moveRight}>►</StyledDPad>
+                            </div>
+                            <StyledDPad onClick={drop}>▼</StyledDPad>
+                        </div>
+                        <div>
+                            <StyledFace onClick={rotateLeft}>B</StyledFace>
+                            <StyledFace onClick={rotateRight}>A</StyledFace>
+                        </div>
+                    </StyledButtons>
+                </div>
                 <aside>
                     <h3>Legend</h3>
                     {
@@ -177,7 +195,7 @@ const Tetris = () => {
                         )
                         : (
                             <div>
-                                {/* <NextBlock block={block}/> */}
+                                <NextBlock preview={preview}/>
                                 <Display text={`Score: ${score}`}/>
                                 <Display text={`Rows: ${rows}`}/>
                                 <Display text={`Level: ${level + 1}`}/>
@@ -185,14 +203,7 @@ const Tetris = () => {
                         )
                     }
                     <StartButton callback={startGame}/>
-                    <StyledButtons>
-                        <StyledControl onClick={rotateLeft}>Rotate<br/>Left</StyledControl>
-                        <StyledControl onClick={hardDrop}>Hard<br/>Drop</StyledControl>
-                        <StyledControl onClick={rotateRight}>Rotate<br/>Right</StyledControl>
-                        <StyledControl onClick={moveLeft}>Move<br/>Left</StyledControl>
-                        <StyledControl onClick={drop}>Soft<br/>Drop</StyledControl>
-                        <StyledControl onClick={moveRight}>Move<br/>Right</StyledControl>
-                    </StyledButtons>
+
                 </aside>
                 <Controls/>
             </StyledTetris>
