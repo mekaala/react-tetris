@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledControls = styled.div`
-font-family: Pixel, Arial, Helvetica, sans-serif;
-color: white;
-text-align: left;
+    margin-left: 85px;
+    width: 100%;
+    font-family: Pixel, Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: left;
 `
 export const StyledKeys = styled.div`
     text-align: center;
