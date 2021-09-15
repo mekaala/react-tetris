@@ -23,7 +23,7 @@ export const StyledStage = styled.div`
             calc(60vw / ${props => props.width})
         );
         grid-template-columns: repeat(${props => props.width}, 1fr);
-        margin-bottom: 130px;
+        margin-bottom: 30px;
     }
     @media only screen and (max-width: 330px) {
         margin-bottom: 30px;
