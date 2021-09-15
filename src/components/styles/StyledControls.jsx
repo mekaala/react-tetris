@@ -6,6 +6,10 @@ export const StyledControls = styled.div`
     font-family: Pixel, Arial, Helvetica, sans-serif;
     color: white;
     text-align: left;
+
+    @media only screen and (max-width: 1050px) {
+        display: none;
+    }
 `
 export const StyledKeys = styled.div`
     text-align: center;
