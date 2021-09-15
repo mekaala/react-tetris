@@ -26,6 +26,6 @@ export const StyledStage = styled.div`
         margin-bottom: 30px;
     }
     @media only screen and (max-width: 330px) {
-        margin-bottom: 30px;
+        margin-bottom: 15px;
     }
 `
