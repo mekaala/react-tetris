@@ -38,7 +38,7 @@ export const StyledTetris = styled.div`
         margin: 0 20px;
     
         aside {
-            width: 35%;
+            width: 60%;
             height: 44%;
             display: block;
             padding: 0px;
@@ -56,10 +56,10 @@ export const StyledButtons = styled.div`
     margin: 1px;
 
     @media only screen and (max-width: 1050px) {
-        margin: 0 -90px 0 0;
+        margin: 0 -130px 0 0;
     }
     @media only screen and (max-width: 330px) {
-        margin: 0 -70px 0 0;
+        margin: 0 -110px 0 0;
     }
 `
 
@@ -107,14 +107,14 @@ export const StyledFace = styled.button`
         width: 60px;
         height: 60px;
         border-radius: 40px;
-        margin: 0 5px;
+        margin: 0 6px;
         padding: 4px;
     }
     @media only screen and (max-width: 330px) {
         width: 45px;
         height: 45px;
         // font-size: 0.5rem;
-        margin: 0 3px;
+        margin: 0 6px;
         padding: 4px;
     }
 `
