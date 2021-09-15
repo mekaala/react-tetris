@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { createStage, checkCollision } from '../gameHelpers';
+import { createStage, createPreview, checkCollision } from '../gameHelpers';
 
 // Style Components
 import { StyledTetrisWrapper, StyledTetris, StyledButtons, StyledDPad, StyledFace } from './styles/StyledTetris';
@@ -10,27 +10,32 @@ import { useInterval } from '../hooks/useInterval';
 import { usePlayer } from '../hooks/usePlayer';
 import { useStage } from '../hooks/useStage';
 import { useGameStatus } from '../hooks/useGameStatus';
+// import { useNextBlock } from '../hooks/useNextBlock';
+// import { usePreview } from '../hooks/usePreview';
 
 // Components
 import Stage from './Stage';
 import Display from './Display';
 import StartButton from './StartButton';
-import NextBlock from './NextBlock';
+// import NextBlock from './NextBlock';
 import Controls from './Controls';
 
 const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
 
-
+    // const [nextBlock, resetBlock] = useNextBlock();
+    // const [preview, setPreview] = usePreview(nextBlock, resetBlock);
     const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
-    const [stage, setStage, preview, rowsCleared] = useStage(player, resetPlayer);
+    const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
     const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
 
     const startGame = () => {
         // reset game
         setStage(createStage());
+        // setPreview(createPreview());
         setDropTime(1000);
+        // resetBlock();
         resetPlayer();
         setGameOver(false);
         setScore(0);
@@ -195,7 +200,7 @@ const Tetris = () => {
                         )
                         : (
                             <div>
-                                <NextBlock preview={preview}/>
+                                {/* <NextBlock preview={preview}/> */}
                                 <Display text={`Score: ${score}`}/>
                                 <Display text={`Rows: ${rows}`}/>
                                 <Display text={`Level: ${level + 1}`}/>
