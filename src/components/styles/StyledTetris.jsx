@@ -6,11 +6,6 @@ export const StyledTetrisWrapper = styled.div`
     background: linear-gradient(-45deg, rgb(0, 0, 126), rgb(39, 0, 39));
     background-size: 200% 200%;
     overflow: hidden;
-
-    @media only screen and (max-width: 1050px) {
-        //   width: 100%;
-        //   height: 100%;
-      }
 `
 
 export const StyledTetris = styled.div`
@@ -47,10 +42,10 @@ export const StyledTetris = styled.div`
 export const StyledButtons = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     column-gap: 5px;
     min-width: 20vw;
-    margin: 10px auto;
+    margin: 1px;
 `
 
 export const StyledDPad = styled.button`
@@ -66,8 +61,8 @@ export const StyledDPad = styled.button`
     cursor: pointer;
 
     @media only screen and (max-width: 1050px) {
-        width: 28px;
-        height: 28px;
+        width: 30px;
+        height: 30px;
         font-size: 0.5rem;
         padding: 4px;
     }
@@ -89,10 +84,10 @@ export const StyledFace = styled.button`
     cursor: pointer;
 
     @media only screen and (max-width: 1050px) {
-        width: 28px;
-        height: 28px;
+        width: 33px;
+        height: 33px;
         font-size: 0.5rem;
-        margin: 3px;
+        margin: 0 3px;
         padding: 4px;
     }
 `
