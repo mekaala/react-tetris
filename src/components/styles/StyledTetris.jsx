@@ -69,8 +69,8 @@ export const StyledDPad = styled.button`
     cursor: pointer;
 
     @media only screen and (max-width: 1050px) {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         // font-size: 0.5rem;
         padding: 4px;
     }
@@ -98,8 +98,8 @@ export const StyledFace = styled.button`
     cursor: pointer;
 
     @media only screen and (max-width: 1050px) {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         border-radius: 40px;
         // font-size: 0.5rem;
         margin: 0 5px;
