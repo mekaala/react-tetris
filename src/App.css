@@ -6,3 +6,7 @@ h1, h3 {
   color: white;
   font-family: Pixel, Arial, Helvetica, sans-serif;
 }
+
+.stage-controls {
+  width: 100%;
+}
