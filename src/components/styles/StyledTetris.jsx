@@ -42,7 +42,7 @@ export const StyledTetris = styled.div`
             height: 44%;
             display: block;
             padding: 0px;
-            margin-left: 10px;
+            margin-left: 15px;
         }
 
         @media only screen and (max-width: 330px) {
