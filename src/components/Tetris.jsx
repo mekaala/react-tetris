@@ -173,7 +173,7 @@ const Tetris = () => {
         <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={e => move(e)} onKeyUp={keyUp}>
             <h1>React Tetris</h1>
             <StyledTetris>
-                <div>
+                <div className="stage-controls">
                     <Stage stage={stage}/>
                     <StyledButtons>
                         <div>
@@ -192,7 +192,6 @@ const Tetris = () => {
                     </StyledButtons>
                 </div>
                 <aside>
-                    <h3>Legend</h3>
                     {
                     gameOver
                         ? (
