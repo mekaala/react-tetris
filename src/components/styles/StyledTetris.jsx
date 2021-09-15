@@ -8,10 +8,10 @@ export const StyledTetrisWrapper = styled.div`
     overflow: hidden;
 
     @media only screen and (max-width: 1050px) {
-        height: 90vh;
+        height: 88vh;
     }
     @media only screen and (max-width: 330px) {
-        height: 95vh;
+        height: 88vh;
     }
 `
 
