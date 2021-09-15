@@ -69,15 +69,14 @@ export const StyledDPad = styled.button`
     cursor: pointer;
 
     @media only screen and (max-width: 1050px) {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         // font-size: 0.5rem;
         padding: 4px;
     }
     @media only screen and (max-width: 330px) {
-        width: 33px;
-        height: 33px;
-        // font-size: 0.5rem;
+        width: 40px;
+        height: 40px;
         padding: 4px;
     }
 `
@@ -101,13 +100,12 @@ export const StyledFace = styled.button`
         width: 60px;
         height: 60px;
         border-radius: 40px;
-        // font-size: 0.5rem;
         margin: 0 5px;
         padding: 4px;
     }
-    @media only screen and (max-width: 300px) {
-        width: 33px;
-        height: 33px;
+    @media only screen and (max-width: 330px) {
+        width: 45px;
+        height: 45px;
         // font-size: 0.5rem;
         margin: 0 3px;
         padding: 4px;
