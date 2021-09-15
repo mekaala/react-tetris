@@ -11,7 +11,7 @@ export const StyledTetrisWrapper = styled.div`
         height: 87vh;
     }
     @media only screen and (max-width: 330px) {
-        height: 87vh;
+        height: 86vh;
     }
 `
 
@@ -44,6 +44,15 @@ export const StyledTetris = styled.div`
             padding: 0px;
             margin-left: 10px;
         }
+
+        @media only screen and (max-width: 330px) {
+            aside {
+                width: 75%;
+                height: 44%;
+                display: block;
+                padding: 0px;
+                margin-left: 10px;
+            }
     }
 `
 
@@ -59,7 +68,7 @@ export const StyledButtons = styled.div`
         margin: 0 -130px 0 0;
     }
     @media only screen and (max-width: 330px) {
-        margin: 0 -110px 0 0;
+        margin: 0 -120px 0 0;
     }
 `
 
