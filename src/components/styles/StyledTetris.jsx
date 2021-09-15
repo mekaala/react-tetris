@@ -6,6 +6,13 @@ export const StyledTetrisWrapper = styled.div`
     background: linear-gradient(-45deg, rgb(0, 0, 126), rgb(39, 0, 39));
     background-size: 200% 200%;
     overflow: hidden;
+
+    @media only screen and (max-width: 1050px) {
+        height: 90vh;
+    }
+    @media only screen and (max-width: 330px) {
+        height: 95vh;
+    }
 `
 
 export const StyledTetris = styled.div`
@@ -32,7 +39,7 @@ export const StyledTetris = styled.div`
     
         aside {
             width: 35%;
-            height: 60.5%;
+            height: 44%;
             display: block;
             padding: 0px;
             margin-left: 10px;
@@ -49,10 +56,10 @@ export const StyledButtons = styled.div`
     margin: 1px;
 
     @media only screen and (max-width: 1050px) {
-        margin: 0 -90px 0 10px;
+        margin: 0 -90px 0 0;
     }
     @media only screen and (max-width: 330px) {
-        margin: 0 -70px 0 10px;
+        margin: 0 -70px 0 0;
     }
 `
 

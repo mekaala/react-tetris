@@ -27,13 +27,13 @@ export const StyledStage = styled.div`
     }
     @media only screen and (max-width: 330px) {
         display: grid;
-        max-width: 50vw;
+        max-width: 45vw;
         grid-template-rows: repeat(
             ${props => props.height},
-            calc(50vw / ${props => props.width})
+            calc(45vw / ${props => props.width})
         );
         grid-template-columns: repeat(${props => props.width}, 1fr);
-        margin-bottom: 30px;
+        margin: 0;
         margin-bottom: 15px;
     }
 `

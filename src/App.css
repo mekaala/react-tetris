@@ -10,3 +10,7 @@ h1, h3 {
 .stage-controls {
   width: 100%;
 }
+
+button {
+  user-select: none;
+}
